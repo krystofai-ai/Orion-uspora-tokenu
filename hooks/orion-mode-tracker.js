@@ -22,7 +22,7 @@ try {
   const input = JSON.parse(fs.readFileSync('/dev/stdin', 'utf8'));
   const prompt = (input.prompt || '').toLowerCase().trim();
 
-  if (prompt.includes('stop orion') || prompt.includes('normal mode')) {
+  if (prompt.includes('zastav orion') || prompt.includes('normální režim') || prompt.includes('stop orion') || prompt.includes('normal mode')) {
     writeFlag('off');
   } else if (prompt.startsWith('/orion')) {
     const arg = prompt.replace('/orion', '').trim();
@@ -30,7 +30,7 @@ try {
     else if (arg === 'ultra') writeFlag('ultra');
     else if (arg === 'off') writeFlag('off');
     else writeFlag('full');
-  } else if (prompt.includes('orion mode') || prompt.includes('talk orion') || prompt.includes('save tokens')) {
+  } else if (prompt.includes('orion mode') || prompt.includes('mluv jako orion') || prompt.includes('šetři tokeny')) {
     writeFlag('full');
   }
 } catch (e) {}

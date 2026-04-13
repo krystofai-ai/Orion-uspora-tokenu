@@ -1,72 +1,65 @@
-# Orion Mode — Token-Saving Claude Skill
+# Orion Mode — Skill pro úsporu tokenů v Claude
 
-> why use many token when few token do trick
+> proč používat mnoho tokenů, když stačí málo
 
-**~75% fewer output tokens. Same technical accuracy.**
+**~75 % méně výstupních tokenů. Stejná technická přesnost.**
 
-Orion mode makes Claude respond with maximum efficiency — no filler, no fluff, pure substance. Save money on API costs, get faster responses, stay focused.
+Orion mode přinutí Clauda odpovídat maximálně efektivně — žádné výplně, žádný fluff, jen podstata. Ušetříš na API nákladech, dostaneš rychlejší odpovědi a zůstaneš soustředěný.
 
-## Install
-
-```bash
-bash <(curl -s https://raw.githubusercontent.com/krystofai/orion/main/hooks/install.sh)
-```
-
-Or clone and run locally:
+## Instalace
 
 ```bash
-git clone https://github.com/krystofai/orion
-bash orion/hooks/install.sh
+bash <(curl -s https://raw.githubusercontent.com/krystofai-ai/Orion-uspora-tokenu/main/hooks/install.sh)
 ```
 
-## Usage
+## Použití
 
-| Command | Effect |
-|---------|--------|
-| `/orion` | Activate (full mode, default) |
-| `/orion lite` | Professional but concise |
-| `/orion ultra` | Maximum compression |
-| `stop orion` | Deactivate |
-| `normal mode` | Deactivate |
+| Příkaz | Efekt |
+|--------|-------|
+| `/orion` | Aktivace (full režim, výchozí) |
+| `/orion lite` | Profesionální, ale stručný |
+| `/orion ultra` | Maximální komprese |
+| `zastav orion` | Deaktivace |
+| `normální režim` | Deaktivace |
 
-## Modes
+## Režimy
 
-**Lite** — drops filler, keeps articles and full sentences. Professional tone.
+**Lite** — odstraňuje výplně, zachovává celé věty. Profesionální tón.
 
-**Full** (default) — drops articles, uses fragments, shorter synonyms. ~65% token reduction.
+**Full** (výchozí) — bez zbytečných slov, fragmenty vět, kratší synonyma. ~65 % úspora tokenů.
 
-**Ultra** — abbreviations, arrows for causality, bullets only. ~80% token reduction.
+**Ultra** — zkratky, šipky pro příčinnost, jen odrážky. ~80 % úspora tokenů.
 
-## Benchmarks
+## Výsledky
 
-| Task | Normal | Orion Full | Saved |
-|------|--------|------------|-------|
-| Code explanation | 312 tokens | 89 tokens | 71% |
-| Bug fix | 198 tokens | 67 tokens | 66% |
-| Architecture review | 445 tokens | 134 tokens | 70% |
+| Úloha | Normálně | Orion Full | Ušetřeno |
+|-------|----------|------------|----------|
+| Vysvětlení kódu | 312 tokenů | 89 tokenů | 71 % |
+| Oprava chyby | 198 tokenů | 67 tokenů | 66 % |
+| Přehled architektury | 445 tokenů | 134 tokenů | 70 % |
 
-## How It Works
+## Jak to funguje
 
-Orion installs two Claude Code hooks:
-- **SessionStart** — loads orion rules at the start of every session
-- **UserPromptSubmit** — tracks when you activate/deactivate orion mode
+Orion nainstaluje dva Claude Code hooks:
+- **SessionStart** — načte pravidla orion na začátku každé session
+- **UserPromptSubmit** — sleduje kdy aktivuješ/deaktivuješ orion mode
 
-Rules are stored in `SKILL.md` and loaded dynamically based on intensity level.
+Pravidla jsou uložena v `SKILL.md` a načítají se dynamicky podle zvolené úrovně intenzity.
 
-## Safety
+## Bezpečnost
 
-Orion auto-suspends for:
-- Security warnings
-- Irreversible action confirmations
-- Multi-step sequences where fragments could cause misunderstanding
+Orion se automaticky pozastaví pro:
+- Bezpečnostní varování
+- Potvrzení nevratných akcí
+- Vícekrokové sekvence kde by fragmenty mohly způsobit nedorozumění
 
-Code blocks and commits always use standard formatting — orion never affects actual code.
+Bloky kódu a commity vždy používají standardní formátování — orion nikdy neovlivňuje samotný kód.
 
-## Requirements
+## Požadavky
 
 - [Claude Code](https://claude.ai/code)
 - Node.js
 
-## License
+## Licence
 
-MIT — by [@krystof_ai](https://instagram.com/krystof_ai)
+MIT — od [@krystof_ai](https://instagram.com/krystof_ai)

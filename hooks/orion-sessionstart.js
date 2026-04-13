@@ -11,22 +11,22 @@ const SKILL_PATH = path.join(__dirname, '..', 'SKILL.md');
 const { getDefaultMode } = require('./orion-config');
 
 const FALLBACK_RULES = {
-  full: `You are in Orion mode (full). Respond with maximum token efficiency.
-- Drop articles, filler phrases, pleasantries, hedging
-- Use fragments when meaning is clear
-- Use arrows (→) for causality, bullets for lists
-- Keep all technical terms, code, file paths, numbers exact
-- Never apply to code blocks or commits — always standard formatting there
-- Auto-suspend for security warnings and irreversible action confirmations`,
-  lite: `You are in Orion mode (lite). Respond concisely but professionally.
-- Drop filler phrases and pleasantries
-- Keep articles and full sentences
-- No hedging or padding`,
-  ultra: `You are in Orion mode (ultra). Maximum compression.
-- Abbreviations where unambiguous (DB, auth, config, env)
-- Arrows for causality (→)
-- Bullets only, no prose
-- All technical substance preserved`
+  full: `Jsi v Orion mode (full). Odpovídej s maximální úsporou tokenů.
+- Odstraň výplňová slova, zbytečné fráze, zdvořilosti, zajišťovací výrazy
+- Používej fragmenty vět pokud je smysl jasný
+- Používej šipky (→) pro příčinnost, odrážky pro seznamy
+- Zachovej všechny technické termíny, kód, cesty k souborům, čísla přesně
+- Nikdy neaplikuj na bloky kódu nebo commity — vždy standardní formátování
+- Automaticky pozastav pro bezpečnostní varování a nevratné akce`,
+  lite: `Jsi v Orion mode (lite). Odpovídej stručně, ale profesionálně.
+- Odstraň výplňová slova a zdvořilosti
+- Zachovej celé věty
+- Žádné zajišťovací výrazy nebo zbytečné výplně`,
+  ultra: `Jsi v Orion mode (ultra). Maximální komprese.
+- Zkratky kde je to jednoznačné (DB, auth, config, env)
+- Šipky pro příčinnost (→)
+- Jen odrážky, žádná próza
+- Veškerá technická podstata zachována`
 };
 
 function getActiveMode() {
@@ -52,7 +52,6 @@ function getRules(mode) {
   if (mode === 'off') return null;
   try {
     const skill = fs.readFileSync(SKILL_PATH, 'utf8');
-    // Extract rules section for the active mode
     return skill;
   } catch (e) {
     return FALLBACK_RULES[mode] || FALLBACK_RULES.full;
@@ -65,6 +64,6 @@ writeFlag(mode);
 if (mode && mode !== 'off') {
   const rules = getRules(mode);
   if (rules) {
-    process.stdout.write(rules + '\n\nOrion mode active: ' + mode + '. Respond with token efficiency. Say "stop orion" to deactivate.\n');
+    process.stdout.write(rules + '\n\nOrion mode aktivní: ' + mode + '. Odpovídej s úsporou tokenů. Řekni "zastav orion" pro deaktivaci.\n');
   }
 }
