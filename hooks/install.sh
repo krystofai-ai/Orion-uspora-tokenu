@@ -41,8 +41,8 @@ fi
 node - "$HOOK_DIR" "$SETTINGS" <<'NODEJS'
 const fs = require('fs');
 const os = require('os');
-const hookDir = process.argv[1];
-const settingsPath = process.argv[2];
+const hookDir = process.argv[2];
+const settingsPath = process.argv[3];
 
 let settings = {};
 try { settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8')); } catch(e) {}
