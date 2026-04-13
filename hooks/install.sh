@@ -30,6 +30,11 @@ curl -fsSL "$REPO/hooks/orion-mode-tracker.js"  -o "$HOOK_DIR/orion-mode-tracker
 curl -fsSL "$REPO/hooks/orion-statusline.sh"    -o "$HOOK_DIR/orion-statusline.sh"
 chmod +x "$HOOK_DIR/orion-statusline.sh"
 
+# Instalace jako Claude Code skill (slash command)
+SKILL_DIR="$HOME/.claude/skills/orion"
+mkdir -p "$SKILL_DIR"
+curl -fsSL "$REPO/SKILL.md" -o "$SKILL_DIR/SKILL.md"
+
 echo "  Soubory nainstalovány."
 
 # Záloha settings.json
